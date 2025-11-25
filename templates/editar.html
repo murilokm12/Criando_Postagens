@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Post</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="container nav">
+    <a class="brand" href="/">
+        <div class="logo">JB</div>
+        <div>
+            <div style="font-weight:700">Editar Post</div>
+            <div class="small text-muted">Modificar Publicação</div>
+        </div>
+    </a>
+    <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/admin">Admin</a>
+    </nav>
+</header>
+
+<div class="container admin-wrap">
+    <div class="admin-panel">
+        <h2>Editar Publicação</h2>
+
+        <form action="/editar/{{ post[0] }}" method="POST">
+            <div class="form-row">
+                <input class="input" name="titulo" value="{{ post[1] }}" required>
+                <textarea name="conteudo" required>{{ post[2] }}</textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+    © 2025 - Blog Educacional Flask
+</footer>
+
+</body>
+</html>

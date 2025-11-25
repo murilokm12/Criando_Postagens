@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="container nav">
+    <a class="brand" href="/">
+        <div class="logo">JB</div>
+        <div>
+            <div style="font-weight:700">Admin</div>
+            <div class="small text-muted">Gerenciar Posts</div>
+        </div>
+    </a>
+    <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/admin">Admin</a>
+    </nav>
+</header>
+
+<div class="container admin-wrap">
+    <div class="admin-panel">
+        <h2>Criar Nova Publicação</h2>
+
+        <form action="/criar" method="POST">
+            <div class="form-row">
+                <input class="input" name="titulo" placeholder="Título da publicação" required>
+                <textarea name="conteudo" placeholder="Conteúdo da publicação..." required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Adicionar</button>
+        </form>
+
+        <hr style="margin:18px 0;">
+
+        <h3>Postagens existentes</h3>
+
+        {% for post in posts %}
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px;">
+            <div>
+                <strong>{{ post[1] }}</strong>
+                <div class="small text-muted">{{ post[2][:50] }}...</div>
+            </div>
+
+            <div class="actions">
+                <a class="btn btn-small btn-edit" href="/editar/{{ post[0] }}">Editar</a>
+
+                <form action="/deletar/{{ post[0] }}" method="POST" style="display:inline;">
+                    <button class="btn btn-small btn-danger" type="submit">Excluir</button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <p>Nenhum post cadastrado ainda.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<footer class="footer">
+    © 2025 - Blog Educacional Flask
+</footer>
+
+</body>
+</html>
