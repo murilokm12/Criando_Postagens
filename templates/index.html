@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog - Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="container nav">
+    <a class="brand" href="/">
+        <div class="logo">JB</div>
+        <div>
+            <div style="font-weight:700">Meu Blog</div>
+            <div class="small text-muted">Tecnologia & Tutoriais</div>
+        </div>
+    </a>
+    <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/admin">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-left">
+            <div class="kicker">Blog de Tecnologia</div>
+            <h1>Conteúdos simples e diretos sobre tecnologia, programação e dicas úteis.</h1>
+            <p class="lead">Um blog criado pelos alunos — onde cada postagem é o resultado de aprendizado.</p>
+
+            <div class="hero-cta">
+                <a class="btn btn-primary" href="/admin">Criar Publicação</a>
+                <a class="btn btn-outline" href="#posts">Ver Posts</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="posts" class="section container">
+    <div class="section-title">
+        <h2>Publicações Recentes</h2>
+    </div>
+
+    <div class="posts-grid">
+        {% for post in posts %}
+        <div class="card">
+            <div class="thumb"></div>
+            <div class="content">
+                <div class="meta">Postado por aluno • {{ post[3] }}</div>
+
+                <h3>{{ post[1] }}</h3>
+                <p>{{ post[2] }}...</p>
+            </div>
+        </div>
+        {% else %}
+        <p>Nenhuma postagem ainda.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<footer class="footer">
+    © 2025 - Blog Educacional Flask
+</footer>
+
+</body>
+</html>
